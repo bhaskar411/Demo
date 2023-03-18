@@ -1,1 +1,43 @@
 <p>todo-list works!</p>
+
+<table class="table table-strip">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Start-Date</th>
+        <th>End Date</th>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let d of todoList" (click)="onclick(d)">
+            <td>{{d.id}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.startDate | date:'yyyy-MM-dd'}}</td>
+            <td>{{d.endDate | date:'yyyy-MM-dd'}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" class="form-group">
+    </div>
+
+    <div class="form-group">
+        <label for="startDate">Start Date : </label>
+        <input type="date" formControlName="startDate" class="form-group">
+    </div>
+
+    <div class="form-group">
+        <label for="endDate">End Date :</label>
+        <input [readonly]="readOnly(todoForm.get('name')?.value)" type="date" formControlName="endDate" [min]="todoForm.get('startDate')?.value" class="form-group">
+    </div>
+
+    <div class="form-group">
+        <button class="form-group" type="submit" [disabled]="!todoForm.valid">Submit</button>
+    </div>
+
+</form>

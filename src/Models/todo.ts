@@ -1,6 +1,6 @@
 export class Todo {
-    Id!:number;
-    Name!:String;
-    StartDate!:Date;
-    EndDate!:Date;
+    id!:number;
+    name!:String;
+    startDate!:Date;
+    endDate!:Date;
 }

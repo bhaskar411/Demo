@@ -1,0 +1,9 @@
+<p>dirtyforms works!</p>
+
+
+<form [formGroup]="settings">
+    <input type="text" formControlName="firstName" placeholder="First name" />
+    <input type="text" formControlName="lastName" placeholder="Last name" />
+  
+    <button (click)="submit()" [disabled]="isDirty$ | async">Submit</button>
+  </form>
